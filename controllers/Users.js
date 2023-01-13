@@ -40,8 +40,8 @@ export const Login = async(req, res) => {
         const userId = user[0].id;
         const name = user[0].name;
         const email = user[0].email;
-        const accesstoken = Jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
-            expiresIn: '20s'
+        const accessToken = Jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
+            expiresIn: '200000000s'
         });
         const refreshtoken = Jwt.sign({userId, name, email}, process.env.REFRESH_TOKEN_SECRET,{
             expiresIn: '1d' 
@@ -55,7 +55,7 @@ export const Login = async(req, res) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000 
         });
-        res.json({ accesstoken });
+        res.json({ accessToken });
     } catch (error) {
         res.status(404).json({msg:"email rak ketemu"})
     }
