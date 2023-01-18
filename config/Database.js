@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('fintrack','root','1234567',{
+const db = new Sequelize('fintrack','root','Dora1932',{
     host: "localhost",
     dialect: "mysql"
 });
